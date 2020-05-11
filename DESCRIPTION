@@ -1,5 +1,5 @@
 Package: metaboliteIDmapping
-Title: Mapping of Metabolite IDs from Different Sources.
+Title: Mapping of Metabolite IDs from Different Sources
 Version: 0.99.0
 Authors@R: 
     person(given = "Sebastian",
@@ -24,7 +24,7 @@ Imports:
     readxl,
     stringr,
     utils
-biocViews: AnnotationHub
+biocViews: AnnotationHub, customDBSchema, FunctionalAnnotation, metaboliteMapping
 URL: https://github.com/yigbt/metaboliteIDmapping
 Encoding: UTF-8
 LazyData: true
