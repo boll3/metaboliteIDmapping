@@ -7,7 +7,7 @@ meta <- data.frame(
     BiocVersion = "3.12",
     Genome = NA,
     SourceType = "TSV",
-    SourceUrl = "make-data.R",
+    SourceUrl = "https://github.com/yigbt/metaboliteIDmapping/blob/master/inst/extdata/metadata.csv",
     SourceVersion = "Apr 30 2020",
     Species = NA,
     TaxonomyId = NA,
