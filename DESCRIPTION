@@ -24,7 +24,7 @@ Imports:
     readxl,
     stringr,
     utils
-biocViews: AnnotationHub, customDBSchema, FunctionalAnnotation, metaboliteMapping
+biocViews: AnnotationHub, CustomDBSchema, FunctionalAnnotation
 URL: https://github.com/yigbt/metaboliteIDmapping
 Encoding: UTF-8
 LazyData: true
