@@ -1,9 +1,73 @@
-## This pipeline merges four different source of metabolite ID formats
-## into one large data structure.
-## Sources are: HMDB, Comptox, ChEBI, and graphite R package
-##
-## Final tibble contains more than 1.000.000 rows with 9 different
-## ID formats.
+# This pipeline merges four different source of metabolite ID formats
+# into one large data structure.
+# Sources are: HMDB, Comptox, ChEBI, and graphite R package
+# 
+# Final tibble contains more than 1.000.000 rows with 9 different
+# ID formats.
+
+
+# This pipeline utilizes several publicly accessible databases to
+# retrieve different metabolite ID formats.
+# In the following we will briefly describe the original sources:
+#
+#
+# 1) Human Metabolome Database ( HMDB)
+#
+# Website: https://hmdb.ca/
+# Current version: 4.0
+# Download link: https://hmdb.ca/system/downloads/current/hmdb_metabolites.zip
+# File format: XML
+# ID formats: HMDB, CAS, Pubchem CID, KEGG, ChEBi, Drugbank
+# Number of metabolites: 114100
+#
+#
+#
+# 2) Chemical Entities of Biological Interest (ChEBI)
+#
+# Website: https://www.ebi.ac.uk/chebi/
+# Current version: Jan 5, 2020
+# Download link: ftp://ftp.ebi.ac.uk/pub/databases/chebi/Flat_file_tab_delimited/database_accession.tsv
+# File format: TSV
+# ID formats: ChEBI, CAS, KEGG
+# Number of metabolites: 17227
+#
+#
+#
+# 3) Comptox Chemical Dashboard
+# 
+# Website: https://comptox.epa.gov/dashboard
+# From comptox we retrieved two separated files, one linking to Pubchem and
+# one linking to CAS numbers.
+#
+# I - Linking to Pubchem
+# Download link: ftp://newftp.epa.gov/COMPTOX/Sustainable_Chemistry_Data/Chemistry_Dashboard/PubChem_DTXSID_mapping_file.txt
+# Current version: Nov 14, 2016
+# File format: TSV
+# ID formats: DTXSID, CID, SID
+# Number of metabolites: 735553
+#
+# II - Linking to CAS registry numbers
+# Download link: ftp://newftp.epa.gov/COMPTOX/Sustainable_Chemistry_Data/Chemistry_Dashboard/2019/April/DSSTox_Identifiers_and_CASRN.xlsx
+# Current version: Apr, 2019
+# File format: XLSX
+# ID formats: DTXCID, DTXSID, CAS
+# Number of metabolites: 875755
+#
+# III - Full-join on both tables based on DTXSID 
+# ID formats: DTXCID, DTXSID, CAS, CID, SID
+# Number of metabolites: 875796
+#
+#
+# 
+# 4) Graphite R package
+#
+# Website: https://www.bioconductor.org/packages/release/bioc/html/graphite.html
+# Current Version: Bioconductor release 3.11
+# Data structure: date.frame
+# Access from R package: graphite:::loadMetaboliteDb()@table
+# ID formats: KEGG, ChEBI, CAS, Pubchem CID
+# Number of metabolites: 155651
+
 
 
 
@@ -164,7 +228,7 @@ cat( "\nSection 1 - Preprocessing \n\n")
 cat( "Step 1 - HMDB\n")
 
 # 1) Download metabolites file from hmdb.ca
-# 2) Unzip the file to get xml file
+# 2) Unzip the file to get xml fileU
 # 3) Extract ID-specific information of metabolites from xml file
 # 4) create HMDB-specific tibble
 
