@@ -12,7 +12,7 @@ Description: The package provides a comprehensive mapping table of
     and merged from four publicly available source, including HMDB, 
     the Comptox Dashboard, ChEBI, and the graphite Bioconductor R package.
 License: AGPL-3
-Depends: R (>= 3.6.0)
+Depends: R (>= 4.0.0)
 Imports: 
     magrittr,
     graphite,
