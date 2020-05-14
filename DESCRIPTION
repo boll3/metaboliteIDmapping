@@ -1,6 +1,6 @@
 Package: metaboliteIDmapping
 Title: Mapping of Metabolite IDs from Different Sources
-Version: 0.99.0
+Version: 0.99.1
 Authors@R: 
     person(given = "Sebastian",
            family = "Canzler",
@@ -13,7 +13,8 @@ Description: The package provides a comprehensive mapping table of
     the Comptox Dashboard, ChEBI, and the graphite Bioconductor R package.
 License: AGPL-3
 Depends: R (>= 4.0.0)
-Imports: 
+Imports: AnnotationHub
+Suggests: 
     magrittr,
     graphite,
     dplyr,
@@ -28,3 +29,4 @@ biocViews: AnnotationHub, CustomDBSchema, FunctionalAnnotation
 URL: https://github.com/yigbt/metaboliteIDmapping
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.0.2
