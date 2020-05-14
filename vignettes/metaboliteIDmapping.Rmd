@@ -127,7 +127,8 @@ datasets[1]
 
 ```
 
-For implanting this data in your code, it is recommended to use the AHid for retrieval:
+For implanting this data in your code, it is recommended to use the
+AHid for retrieval:
 ```{r load_mapping}
 
 data <- ah[["AH79817"]]

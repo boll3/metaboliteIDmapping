@@ -23,15 +23,15 @@
 #'
 #' @format A tibble with 9 variables and over 1.1 million metabolites:
 #' \describe{
-#'    \item{DTXCID}{DSSTox structure identifier, character}
-#'    \item{DTXSID}{DSSTox substance identifier, character}
-#'    \item{CAS}{CAS registry number, character}
-#'    \item{CID}{Pubchem compound identifier, character}
-#'    \item{CID}{Pubchem substance identifier, character}
-#'    \item{HMDB}{Human Metabolome Database identifier (new format), character}
-#'    \item{ChEBI}{Chemical Entities of Biological Interest identifier, character}
-#'    \item{KEGG}{KEGG Compound identifier, character}
-#'    \item{Drugbank}{Drugbank identifier, character}
+#'     \item{DTXCID}{DSSTox structure identifier, character}
+#'     \item{DTXSID}{DSSTox substance identifier, character}
+#'     \item{CAS}{CAS registry number, character}
+#'     \item{CID}{Pubchem compound identifier, character}
+#'     \item{CID}{Pubchem substance identifier, character}
+#'     \item{HMDB}{Human Metabolome Database identifier (new format), character}
+#'     \item{ChEBI}{Chemical Entities of Biological Interest identifier, character}
+#'     \item{KEGG}{KEGG Compound identifier, character}
+#'     \item{Drugbank}{Drugbank identifier, character}
 #' }
 #'
 #' @keywords datasets
