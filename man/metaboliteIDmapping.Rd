@@ -11,9 +11,6 @@ Dashboard, KEGG, HMDB, Drugbank, ChEbi, and CAS.
 The mapping table contains more than 1.1 million metabolite
 entries.
 }
-\examples{
-ls('package::metaboliteIDMapping')
-}
 \author{
 Sebastian Canzler \email{sebastian.canzler@ufz.de}
 }

@@ -11,7 +11,5 @@
 #' @author Sebastian Canzler \email{sebastian.canzler@@ufz.de}
 #' @docType package
 #' @keywords package
-#' @examples
-#' ls('package::metaboliteIDMapping')
 NA
 ###########################################################
