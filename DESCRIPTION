@@ -1,6 +1,6 @@
 Package: metaboliteIDmapping
 Title: Mapping of Metabolite IDs from Different Sources
-Version: 0.99.2
+Version: 0.99.3
 Authors@R: 
     person(given = "Sebastian",
            family = "Canzler",
@@ -24,8 +24,10 @@ Suggests:
     XML,
     readxl,
     stringr,
-    utils
+    utils,
+    knitr
 biocViews: AnnotationHub, CustomDBSchema, FunctionalAnnotation
+VignetteBuilder: knitr
 URL: https://github.com/yigbt/metaboliteIDmapping
 Encoding: UTF-8
 LazyData: true
