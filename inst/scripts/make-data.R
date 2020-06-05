@@ -281,6 +281,10 @@ if( !file.exists( hmdbfile) || recompute){
 }
 
 
+## keep names of metabolites in separate tibble
+hmdb_names <- hmdb %>% select( HMDB, Name)
+hmdb <- hmdb %>% select( -Name)
+
 
 
 #####################################################################
@@ -427,6 +431,10 @@ if( !file.exists( comptoxfile) || recompute){
 
 }
 
+## keep names of metabolites in separate tibble
+comptox_names <- comptox %>% select( CAS, DTXSID, Name)
+comptox <- comptox %>% select( -Name)
+
 
 
 
@@ -446,8 +454,6 @@ colnames( graphite) <- c( "SID", "KEGG", "ChEBI", "CAS")
 # subset the tibble to those which have at least a CAS OR SID
 graphite_noNA <- graphite %>% filter( !is.na( CAS) | !is.na( SID))
 graphite_NA <- graphite %>% filter( is.na( CAS) & is.na( SID))
-
-
 
 
 
