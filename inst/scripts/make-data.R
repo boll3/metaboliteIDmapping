@@ -410,8 +410,8 @@ if( !file.exists( comptoxfile) || recompute){
     }
 
     comptox_cas <- readxl::read_xlsx( path = destfile, sheet = 1) %>%
-        dplyr::select( casrn, dsstox_substance_id, dsstox_structure_id)
-    colnames( comptox_cas) <-  c( "CAS", "DTXSID", "DTXCID")
+        dplyr::select( casrn, dsstox_substance_id, dsstox_structure_id, preferred_name)
+    colnames( comptox_cas) <-  c( "CAS", "DTXSID", "DTXCID", "Name")
 
     ## combine both comptox data sets
     ## and remove those rows where DTXSIDs do not start with "DTXSID"
