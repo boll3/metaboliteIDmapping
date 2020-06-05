@@ -117,7 +117,8 @@ ourBranches <- function() {
                   ChEBI = xmlGetValue(x, "//chebi_id"),
                   KEGG = xmlGetValue(x, "//kegg_id"),
                   CID = xmlGetValue(x, "//pubchem_compound_id"),
-                  Drugbank = xmlGetValue(x, "//drugbank_id"))
+                  Drugbank = xmlGetValue(x, "//drugbank_id"),
+                  Name = xmlGetValue(x, "//name"))
         store[[ key]] <- ids
     }
 
