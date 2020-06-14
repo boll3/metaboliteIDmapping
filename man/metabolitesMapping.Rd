@@ -15,6 +15,7 @@
     \item{ChEBI}{Chemical Entities of Biological Interest identifier, character}
     \item{KEGG}{KEGG Compound identifier, character}
     \item{Drugbank}{Drugbank identifier, character}
+    \item{Name}{Metabolite common name, character}
 }}
 \usage{
 metabolitesMapping
@@ -32,7 +33,8 @@ SID (Pubchem),
 HMDB,
 ChEBI,
 KEGG,
-and Drugbank
+Drugbank,
+and their common name.
 }
 \examples{
 metabolitesMapping

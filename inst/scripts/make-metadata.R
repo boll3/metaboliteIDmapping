@@ -16,7 +16,7 @@ meta <- data.frame(
     Maintainer = "Sebastian Canzler <sebastian.canzler@ufz.de>",
     RDataClass = "Tibble",
     DispatchClass = "Rda",
-    RDataPath = "metaboliteIDmapping/v1/metabolitesMapping.rda",
+    RDataPath = "metaboliteIDmapping/v2/metabolitesMapping.rda",
     Tags = "metabolites:mapping:HMDB:KEGG:ChEBI:Pubchem:Comptox:CAS:Drugbank"
 )
 
