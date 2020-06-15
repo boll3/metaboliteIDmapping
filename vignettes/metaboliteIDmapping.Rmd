@@ -18,21 +18,25 @@ vignette: >
 
 # Introduction
 
-The `metaboliteIDmapping` AnnotationHub package provides a comprehensive ID
-mapping for various metabolite ID formats. Within this annotation package, nine
-different ID formats are merged in one large mapping table. These include
-[Comptox Chemical Dashboard](https://comptox.epa.gov/dashboard) IDs (DTXCID, DTXSID),
-[Pubchem](https://pubchem.ncbi.nlm.nih.gov/) IDs (CID, SID),
-[CAS Registry numbers](https://www.cas.org/support/documentation/references) (CAS-RN),
-[Human Metabolome Database](https://hmdb.ca/) (HMDB),
-[Chemical Entities of Biological Interest](https://www.ebi.ac.uk/chebi/) (ChEBI),
-[KEGG Compounds](https://www.genome.jp/kegg/compound/) (KEGG),
-and [Drugbank](https://www.drugbank.ca/) (Drugbank)
+The `metaboliteIDmapping` AnnotationHub package provides a
+comprehensive ID mapping for various metabolite ID formats. Within
+this annotation package, nine different ID formats and metabolite
+common names are merged in one large mapping table. ID formats include
+[Comptox Chemical Dashboard](https://comptox.epa.gov/dashboard) IDs
+(DTXCID, DTXSID), [Pubchem](https://pubchem.ncbi.nlm.nih.gov/) IDs
+(CID, SID), [CAS Registry
+numbers](https://www.cas.org/support/documentation/references)
+(CAS-RN), [Human Metabolome Database](https://hmdb.ca/) (HMDB),
+[Chemical Entities of Biological
+Interest](https://www.ebi.ac.uk/chebi/) (ChEBI), [KEGG
+Compounds](https://www.genome.jp/kegg/compound/) (KEGG), and
+[Drugbank](https://www.drugbank.ca/) (Drugbank)
 
-The metabolite IDs were retrieved from four different publicly available sources
-and merged into one mapping table by means of the R script that is distributed
-alongside the AnnotationHub package. The script is located in 
-`system.file( package = "metaboliteIDmapping", "/scripts/make-data.R")`
+The metabolite IDs and names were retrieved from four different
+publicly available sources and merged into one mapping table by means
+of the R script that is distributed alongside the AnnotationHub
+package. The script is located in `system.file( package =
+"metaboliteIDmapping", "/scripts/make-data.R")`
 
 A brief description of the utilized data sources is given in the following section.
 

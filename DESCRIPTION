@@ -1,16 +1,16 @@
 Package: metaboliteIDmapping
 Title: Mapping of Metabolite IDs from Different Sources
-Version: 0.99.3
+Version: 0.99.4
 Authors@R: 
     person(given = "Sebastian",
            family = "Canzler",
            role = c("aut", "cre"),
            email = "sebastian.canzler@ufz.de",
            comment = c(ORCID = "0000-0001-7935-9582"))
-Description: The package provides a comprehensive mapping table of
-    nine different Metabolite ID formats that have been collected
-    and merged from four publicly available source, including HMDB, 
-    the Comptox Dashboard, ChEBI, and the graphite Bioconductor R package.
+Description: The package provides a comprehensive mapping table of nine
+    different Metabolite ID formats and their common name. The data has
+    been collected and merged from four publicly available source, including
+    HMDB, Comptox Dashboard, ChEBI, and the graphite Bioconductor R package.
 License: AGPL-3
 Depends: R (>= 4.0.0)
 Imports: AnnotationHub
