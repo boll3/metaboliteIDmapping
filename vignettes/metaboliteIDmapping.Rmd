@@ -129,13 +129,20 @@ datasets <- query( ah, "metaboliteIDmapping")
 
 datasets[1]
 
+datasets[2]
+
 ```
+
+Currently, there are two versions of the mapping table. 
+
+* AH79817 represents the original ID mapping containing 9 different ID formats
+* AH83115 is the current mapping table which also includes common names for each compound
 
 For implanting this data in your code, it is recommended to use the
 AHid for retrieval:
 ```{r load_mapping}
 
-data <- ah[["AH79817"]]
+data <- ah[["AH83115"]]
 
 data
 
