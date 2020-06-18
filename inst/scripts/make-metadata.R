@@ -1,6 +1,6 @@
 
 meta <- data.frame(
-    Title = "Mapping table of metabolite IDs and common names from different sources",
+    Title = "Mapping table of metabolite IDs and common names",
     Description = paste0("Large mapping table including metabolite common names ",
     		         "and 9 distinct metabolite ID formats that orignated ",
 			 "from 4 different databases: HMDB, Comptox Dashboard, ",
