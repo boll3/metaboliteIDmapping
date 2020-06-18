@@ -21,4 +21,4 @@ meta <- data.frame(
     Tags = "metabolites:mapping:HMDB:KEGG:ChEBI:Pubchem:Comptox:CAS:Drugbank"
 )
 
-write.csv(meta, file="metadata.csv", row.names=FALSE)
+write.csv(meta, file="metadata.v2.csv", row.names=FALSE)
