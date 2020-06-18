@@ -1,6 +1,6 @@
 Package: metaboliteIDmapping
 Title: Mapping of Metabolite IDs from Different Sources
-Version: 0.99.5
+Version: 0.99.6
 Authors@R: 
     person(given = "Sebastian",
            family = "Canzler",
