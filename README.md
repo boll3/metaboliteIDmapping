@@ -65,7 +65,7 @@ Currently, there are two versions of the mapping table.
 
 For implanting this data in your code, it is recommended to use the
 AHid for retrieval:
-```
+```R
 data <- ah[["AH83115"]]
 ```
 
