@@ -1,19 +1,20 @@
 Package: metaboliteIDmapping
-Title: Mapping of Metabolite IDs from Different Sources.
-Version: 0.99.0
+Title: Mapping of Metabolite IDs from Different Sources
+Version: 0.99.8
 Authors@R: 
     person(given = "Sebastian",
            family = "Canzler",
            role = c("aut", "cre"),
            email = "sebastian.canzler@ufz.de",
            comment = c(ORCID = "0000-0001-7935-9582"))
-Description: The package provides a comprehensive mapping table of
-    nine different Metabolite ID formats that have been collected
-    and merged from four publicly available source, including HMDB, 
-    the Comptox Dashboard, ChEBI, and the graphite Bioconductor R package.
-License: AGPL-3
-Depends: R (>= 3.6.0)
-Imports: 
+Description: The package provides a comprehensive mapping table of nine
+    different Metabolite ID formats and their common name. The data has
+    been collected and merged from four publicly available source, including
+    HMDB, Comptox Dashboard, ChEBI, and the graphite Bioconductor R package.
+License: GPL-3
+Depends: R (>= 4.0.0)
+Imports: AnnotationHub
+Suggests: 
     magrittr,
     graphite,
     dplyr,
@@ -23,8 +24,11 @@ Imports:
     XML,
     readxl,
     stringr,
-    utils
-biocViews: AnnotationHub
+    utils,
+    knitr
+biocViews: AnnotationHub, CustomDBSchema, FunctionalAnnotation
+VignetteBuilder: knitr
 URL: https://github.com/yigbt/metaboliteIDmapping
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.0.2

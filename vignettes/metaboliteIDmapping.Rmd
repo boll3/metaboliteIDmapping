@@ -1,0 +1,149 @@
+---
+title: "metaboliteIDmapping"
+subtitle: "Mapping table for various metabolite ID formats"
+author: 
+- name: Sebastian Canzler
+  affiliation: Helmholtz-Centre for Environmental Research - UFZ, Leipzig, Germany
+package: metaboliteIDmapping
+date: "May 12, 2020"
+output:
+  BiocStyle::html_document:
+    toc_float: true
+  BiocStyle::pdf_document: default
+vignette: >
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{metaboliteIDmapping}
+---
+
+# Introduction
+
+The `metaboliteIDmapping` AnnotationHub package provides a
+comprehensive ID mapping for various metabolite ID formats. Within
+this annotation package, nine different ID formats and metabolite
+common names are merged in one large mapping table. ID formats include
+[Comptox Chemical Dashboard](https://comptox.epa.gov/dashboard) IDs
+(DTXCID, DTXSID), [Pubchem](https://pubchem.ncbi.nlm.nih.gov/) IDs
+(CID, SID), [CAS Registry
+numbers](https://www.cas.org/support/documentation/references)
+(CAS-RN), [Human Metabolome Database](https://hmdb.ca/) (HMDB),
+[Chemical Entities of Biological
+Interest](https://www.ebi.ac.uk/chebi/) (ChEBI), [KEGG
+Compounds](https://www.genome.jp/kegg/compound/) (KEGG), and
+[Drugbank](https://www.drugbank.ca/) (Drugbank)
+
+The metabolite IDs and names were retrieved from four different
+publicly available sources and merged into one mapping table by means
+of the R script that is distributed alongside the AnnotationHub
+package. The script is located in `system.file( package =
+"metaboliteIDmapping", "/scripts/make-data.R")`
+
+A brief description of the utilized data sources is given in the following section.
+
+# Data sources
+
+Four publicly available sources were queried to retrieved nine different metabolite
+ID formats. As short description of those sources is listed below:
+
+## The Human Metabolome Database (HMDB)
+
+    * Website: https://hmdb.ca/
+    * Current version: 4.0
+    * Download link: https://hmdb.ca/system/downloads/current/hmdb_metabolites.zip
+    * File format: XML
+    * ID formats: HMDB, CAS, Pubchem CID, KEGG, ChEBi, Drugbank
+    * Number of metabolites: 114100
+
+## Chemical Entities of Biological Interest (ChEBI)
+
+    * Website: https://www.ebi.ac.uk/chebi/
+    * Current version: Jan 5, 2020
+    * Download link: ftp://ftp.ebi.ac.uk/pub/databases/chebi/Flat_file_tab_delimited/database_accession.tsv
+    * File format: TSV
+    * ID formats: ChEBI, CAS, KEGG
+    * Number of metabolites: 17227
+
+
+## Comptox Chemical Dashboard
+ 
+    * Website: https://comptox.epa.gov/dashboard
+    * Comptox Chemical Dashboard supplied us with two separate files, 
+    one linking to Pubchem IDs and other linking to CAS numbers.
+
+### Linking to Pubchem
+ 
+    * Download link: ftp://newftp.epa.gov/COMPTOX/Sustainable_Chemistry_Data/Chemistry_Dashboard/PubChem_DTXSID_mapping_file.txt
+    * Current version: Nov 14, 2016
+    * File format: TSV
+    * ID formats: DTXSID, CID, SID
+    * Number of metabolites: 735553
+
+### Linking to CAS registry numbers
+ 
+    * Download link: ftp://newftp.epa.gov/COMPTOX/Sustainable_Chemistry_Data/Chemistry_Dashboard/2019/April/DSSTox_Identifiers_and_CASRN.xlsx
+    * Current version: Apr, 2019
+    * File format: XLSX
+    * ID formats: DTXCID, DTXSID, CAS
+    * Number of metabolites: 875755
+
+### Full-join on both tables based on DTXSID 
+
+    * ID formats: DTXCID, DTXSID, CAS, CID, SID
+    * Number of combined metabolites: 875796
+
+
+## `graphite` R package
+
+    * Website: https://www.bioconductor.org/packages/release/bioc/html/graphite.html
+    * Current Version: Bioconductor release 3.11
+    * Data structure: date.frame
+    * Access from R package: `graphite:::loadMetaboliteDb()@table`
+    * ID formats: KEGG, ChEBI, CAS, Pubchem CID
+    * Number of metabolites: 155651
+
+
+
+# Usage
+
+There are two different ways to load the mapping ID table from this package.
+
+First, simply load the `metaboliteIDmapping` package into your R session.
+When the package is loaded, the data will be available as tibble:
+
+```{r load_library}
+
+library( metaboliteIDmapping)
+
+metabolitesMapping
+
+```
+
+Second, search for the mapping table in the AnnotationHub resource interface:
+
+```{r search_mapping}
+
+library( AnnotationHub)
+
+ah <- AnnotationHub()
+datasets <- query( ah, "metaboliteIDmapping")
+
+datasets[1]
+
+datasets[2]
+
+```
+
+Currently, there are two versions of the mapping table. 
+
+* AH79817 represents the original ID mapping containing 9 different ID formats
+* AH83115 is the current mapping table which also includes common names for each compound
+
+For implanting this data in your code, it is recommended to use the
+AHid for retrieval:
+```{r load_mapping}
+
+data <- ah[["AH83115"]]
+
+data
+
+```

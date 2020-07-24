@@ -117,7 +117,8 @@ ourBranches <- function() {
                   ChEBI = xmlGetValue(x, "//chebi_id"),
                   KEGG = xmlGetValue(x, "//kegg_id"),
                   CID = xmlGetValue(x, "//pubchem_compound_id"),
-                  Drugbank = xmlGetValue(x, "//drugbank_id"))
+                  Drugbank = xmlGetValue(x, "//drugbank_id"),
+                  Name = xmlGetValue(x, "//name"))
         store[[ key]] <- ids
     }
 
@@ -280,6 +281,10 @@ if( !file.exists( hmdbfile) || recompute){
 }
 
 
+## keep names of metabolites in separate tibble
+hmdb_names <- hmdb %>% select( HMDB, Name)
+hmdb <- hmdb %>% select( -Name)
+
 
 
 #####################################################################
@@ -409,8 +414,8 @@ if( !file.exists( comptoxfile) || recompute){
     }
 
     comptox_cas <- readxl::read_xlsx( path = destfile, sheet = 1) %>%
-        dplyr::select( casrn, dsstox_substance_id, dsstox_structure_id)
-    colnames( comptox_cas) <-  c( "CAS", "DTXSID", "DTXCID")
+        dplyr::select( casrn, dsstox_substance_id, dsstox_structure_id, preferred_name)
+    colnames( comptox_cas) <-  c( "CAS", "DTXSID", "DTXCID", "Name")
 
     ## combine both comptox data sets
     ## and remove those rows where DTXSIDs do not start with "DTXSID"
@@ -425,6 +430,10 @@ if( !file.exists( comptoxfile) || recompute){
     load( file = comptoxfile)
 
 }
+
+## keep names of metabolites in separate tibble
+comptox_names <- comptox %>% select( DTXSID, Name)
+comptox <- comptox %>% select( -Name)
 
 
 
@@ -445,8 +454,6 @@ colnames( graphite) <- c( "SID", "KEGG", "ChEBI", "CAS")
 # subset the tibble to those which have at least a CAS OR SID
 graphite_noNA <- graphite %>% filter( !is.na( CAS) | !is.na( SID))
 graphite_NA <- graphite %>% filter( is.na( CAS) & is.na( SID))
-
-
 
 
 
@@ -764,7 +771,10 @@ if( !file.exists( joined_full) || recompute){
             }
         }
     }
-
+    joined_full <- file.path( rappdirs::user_cache_dir(),
+                              "metabolitesMapping.rda",
+                              fsep = .Platform$file.sep)
+    
     metabolitesMapping <- bind_rows( metabolitesMapping, noMatch)
     save( metabolitesMapping, file = joined_full, compress = "xz")
 
@@ -773,3 +783,46 @@ if( !file.exists( joined_full) || recompute){
     load( file = joined_full)
 
 }
+
+
+
+#####################################################################
+#####################################################################
+##
+## Adding common names
+##
+#####################################################################
+#####################################################################
+
+
+## From Comptox Dashboard and HMDB we were able to extract common names for
+## the retrieved metabolites. These shall now be merged with the mapping table.
+## 1) Join Comptox names based on their DTXSID
+## 2) Fill the remaining HMDB gaps based on their HMDB identifier
+
+## join names from Comptox
+metabolitesMapping <- metabolitesMapping %>% full_join( comptox_names)
+
+## joint remaining HMDB names
+## These are 99560 entries.
+## Get all HMDB entries without an associated Name
+## Get their respective position in the metabolitesMapping table and the 
+## hmdb_names mapping table
+## Insert a Position value in metabolitesMapping to make sure that duplicated
+## HMDB entries both get a valid Name
+## Remove the Position column in the end.
+missing_values <- metabolitesMapping %>% filter( !is.na( HMDB) & is.na( Name)) %>% pull( HMDB)
+missing_positions <- metabolitesMapping %>% filter( !is.na( HMDB) & is.na( Name)) %>% pull( Position)
+hmdb_values_present <- metabolitesMapping %>% filter( !is.na( HMDB) & !is.na( Name)) %>% pull( HMDB)
+tmp <- missing_values %notin% hmdb_values_present
+
+missing_positions <- missing_positions[ tmp]
+missing_values <- missing_values[ tmp]
+
+hmdb_missing <- match( missing_values, hmdb_names$HMDB)
+metabolitesMapping$Name[ missing_positions] <- hmdb_names$Name[ hmdb_missing]
+
+metabolitesMapping <- metabolitesMapping %>% select( -Position)
+
+save( metabolitesMapping, file = joined_full, compress = "xz")
+
